@@ -1,0 +1,41 @@
+<header class="site-header">
+    <nav class="navbar">
+        <div class="navbar-brand">
+            <a href="{{ url_for('main.landing') }}" class="navbar-item">
+                <h1>NeighborGoods</h1>
+            </a>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a href="{{ url_for('main.landing') }}" class="navbar-item">Home</a>
+                <a href="#" class="navbar-item">Browse Items</a>
+                <a href="#" class="navbar-item">My Requests</a>
+            </div>
+
+            <div class="navbar-end">
+                {% if current_user.is_authenticated %}
+                    <div class="navbar-item has-dropdown">
+                        <a href="#" class="navbar-link">
+                            {{ current_user.username }}
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a href="#" class="navbar-item">Profile</a>
+                            <a href="#" class="navbar-item">My Items</a>
+                            <a href="#" class="navbar-item">Settings</a>
+                            <hr class="navbar-divider">
+                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="navbar-item">
+                        <div class="buttons">
+                            <a href="{{ url_for('auth.register') }}" class="button is-primary">Sign up</a>
+                            <a href="{{ url_for('auth.login') }}" class="button is-light">Log in</a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>

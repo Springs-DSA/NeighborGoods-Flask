@@ -1,0 +1,43 @@
+{% macro item_card(item) %}
+<div class="item-card">
+    <div class="item-image">
+        {% if item.image_path %}
+            <img src="{{ url_for('static', filename=item.image_path) }}" alt="{{ item.name }}">
+        {% else %}
+            <div class="placeholder-image">No image available</div>
+        {% endif %}
+    </div>
+
+    <div class="item-content">
+        <h3 class="item-title">{{ item.name }}</h3>
+        <p class="item-description">{{ item.description|truncate(100) }}</p>
+        
+        <div class="item-metadata">
+            <span class="owner">Shared by: {{ item.owner.username }}</span>
+            <span class="loan-period">Max loan: {{ item.loan_period }} days</span>
+            {% if item.tags %}
+                <div class="tags">
+                    {% for tag in item.tags %}
+                        <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="item-status">
+            {% if item.available %}
+                <span class="status-badge available">Available</span>
+            {% else %}
+                <span class="status-badge unavailable">Currently Borrowed</span>
+            {% endif %}
+        </div>
+
+        <div class="item-actions">
+            <a href="{{ url_for('main.item_detail', item_id=item.id) }}" class="button">View Details</a>
+            {% if item.available %}
+                <button class="button is-primary request-item" data-item-id="{{ item.id }}">Request Item</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endmacro %}

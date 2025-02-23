@@ -1,5 +1,91 @@
 # NeighborGoods Implementation Roadmap
 
+NeighborGoods-Flask/
+├── app/
+│   ├── __init__.py                 # Application factory
+│   ├── extensions.py               # Flask extensions (db, login, etc.)
+│   ├── config.py                   # Configuration classes
+│   ├── api/                        # API Blueprint
+│   │   ├── __init__.py
+│   │   ├── routes/
+│   │   │   ├── __init__.py
+│   │   │   ├── items.py
+│   │   │   ├── requests.py
+│   │   │   ├── users.py
+│   │   │   └── notifications.py
+│   │   └── schemas/               # API schemas/serializers
+│   │       ├── __init__.py
+│   │       ├── item.py
+│   │       ├── request.py
+│   │       └── user.py
+│   ├── auth/                      # Auth Blueprint
+│   │   ├── __init__.py
+│   │   ├── routes.py
+│   │   └── utils.py
+│   ├── core/                      # Core application logic
+│   │   ├── __init__.py
+│   │   ├── item_manager.py
+│   │   ├── request_manager.py
+│   │   ├── notification_manager.py
+│   │   └── activitypub_manager.py
+│   ├── models/                    # Database models
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── item.py
+│   │   ├── request.py
+│   │   └── notification.py
+│   ├── repositories/              # Database interaction layer
+│   │   ├── __init__.py
+│   │   ├── base.py
+│   │   ├── user_repository.py
+│   │   ├── item_repository.py
+│   │   └── request_repository.py
+│   ├── services/                  # Business logic services
+│   │   ├── __init__.py
+│   │   ├── item_service.py
+│   │   ├── request_service.py
+│   │   └── notification_service.py
+│   ├── static/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── uploads/              # User uploaded content
+│   │       └── items/
+│   ├── templates/
+│   │   ├── base.html            # Base template
+│   │   ├── components/          # Reusable template components
+│   │   │   ├── header.html
+│   │   │   ├── footer.html
+│   │   │   ├── item_card.html
+│   │   │   └── notification.html
+│   │   ├── auth/
+│   │   │   ├── login.html
+│   │   │   └── register.html
+│   │   ├── items/
+│   │   │   ├── list.html
+│   │   │   └── detail.html
+│   │   └── requests/
+│   │       ├── list.html
+│   │       └── detail.html
+│   └── utils/                    # Utility functions
+│       ├── __init__.py
+│       ├── validators.py
+│       ├── decorators.py
+│       └── helpers.py
+├── migrations/                   # Database migrations
+├── tests/                       # Test suite
+│   ├── conftest.py
+│   ├── unit/
+│   │   ├── test_models.py
+│   │   └── test_services.py
+│   └── integration/
+│       ├── test_api.py
+│       └── test_web.py
+├── .env                        # Environment variables
+├── .gitignore
+├── config.py                   # Configuration loader
+├── requirements.txt
+└── run.py                      # Application entry point
+
 ## Phase 1: Core Database Models
 **Estimated Timeline: 1-2 weeks**
 
