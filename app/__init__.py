@@ -14,6 +14,10 @@ login.login_view = 'auth.login'
 login.login_message = 'Please log in to access this page.'
 login.login_message_category = 'info'
 
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
