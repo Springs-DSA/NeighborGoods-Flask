@@ -46,6 +46,12 @@ def create_app(config_class=Config):
     from app.utils import filters
     app.jinja_env.filters['timeago'] = filters.timeago
 
+    # Add context processor for template variables
+    from datetime import datetime
+    @app.context_processor
+    def inject_now():
+        return {'now': datetime.utcnow()}
+
     # Register shell context
     @app.shell_context_processor
     def make_shell_context():
