@@ -27,3 +27,21 @@ If the object is damaged, lost, or stolen, or a service causes damage to propert
 
 All members of the community acknowledge that their property might be lost, damaged, or stolen by offering it to the community. unresolved disputes will be shown on a user's profile as part of their private description. Late returns will also be displayed for a 2 months after being resolved.
 
+# Database models
+1. User - item budget?
+2. Item - contains description of item, and also rules for stewardship changes (e.g. how long the stewardship change lockout is, how many budget points this item consumes?)
+3. StewardshipRecord - new record created when an item changes hands, and maintains information about the item's condition, such as location. also contains use case (could be transfered to use the item, or perform maintenance, or to store the item.) - use what 3 words api?
+4. StewardReport - attached to Stewardship records, noting things like item condition upon taking custody, unexpected breaking, etc.
+5. Certification - acknowledgements of skill or training in specific areas, e.g. ability to use a 3d printer, drive a vehicle, or use a chainsaw. Also provide user permissions, such as being a system admin or a moderator.
+6. ItemCertRequirement - what certifications a user needs to have before an item can transfer to their stewardship. can have different requirements for different stewardship types. Join table
+7. UserCertification - a token marking completion of a certification. always has a lifetime, or can be taken away through disciplinary action. Join table.
+8. MaintenanceRequirement - attached to items to determine how often and what sort of care they require.
+9. MaintenanceLog - record of actual maintenance performed on items.
+10. Tag
+11. ItemTags - join table
+12. CertificationTag? - default cert requirements that come from tags?
+13. MaintenanceTag? - default maintenance requirements that come from tags?
+14. NodeSettings - EAV table for stuff like default user item budget, Node name and ID, etc.? 
+15. PeerAssesment - records of both peer punishments and peer commendations. Altruistic punishment is accomplished by requiring multiple other users to give up their certification(s) to remove an equivalent certification of the target user. How to handle peer rewards? also how certifications are bestowed?
+16. Post - Necessary? Way to build community. Pinnable to show rules? Instructions? longer form content.
+17. Thread - Way to request and coordinate, uses location like in foxhole game. short form content.
